@@ -232,9 +232,29 @@ public class LeetCodeQuestions {
         }
     }
 
+    public static int majorityElement(int[] nums) {
+//        Arrays.sort(nums);
+//        int candidate = nums[0];
+//        int count = 0;
+//        for(int i : nums){
+//            if(candidate==i){
+//                count++;
+//                if(count>nums.length/2){
+//                    return i;
+//                }
+//            }else{
+//                candidate = i;
+//                count = 1;
+//            }
+//        }
+//        return -1;
+        Arrays.sort(nums);
+        return nums[nums.length/2];
+    }
+
     public static void main(String[] args) {
-        int[] nums1 = {0};
-        int[] nums2 = {1};
-        merge(nums1,0,nums2,1);
+        int[] nums = {3,2,3};
+        int result = majorityElement(nums);
+        System.out.println(result);
     }
 }
