@@ -252,9 +252,68 @@ public class LeetCodeQuestions {
         return nums[nums.length/2];
     }
 
+    public static int tribonacci(int n) {
+        int i =3,a=0,b=1,c=1,d=0;
+        if(n==1 || n==2){
+            return 1;
+        }else if(n==0){
+            return 0;
+        } else {
+            while (i <= n) {
+                d = a + b + c;
+                a = b;
+                b = c;
+                c = d;
+                i++;
+            }
+        }
+        return d;
+    }
+
+    public static int maxProduct(int[] nums) {
+        //////////////// first method
+        // Arrays.sort(nums);
+        // int i = nums.length-2;
+        // int j = nums.length-1;
+        // return (nums[i]-1)*(nums[j]-1);
+
+        ///////////////second method
+
+        // int firstMax = Integer.MIN_VALUE;
+        // int secondMax = Integer.MIN_VALUE;
+        // for(int i =0;i<nums.length;i++){
+        //     if(nums[i]>firstMax){
+        //         secondMax= firstMax;
+        //         firstMax=nums[i];
+        //     }
+        //     else if(nums[i]>secondMax){
+        //         secondMax=nums[i];
+        //     }
+        // }
+        // return (firstMax-1)*(secondMax-1);
+
+        ///////////////// third method
+
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        int i = 0;
+        while(i < nums.length){
+            minHeap.add(nums[i]);
+            i++;
+            if(minHeap.size() > 2){
+                minHeap.poll();
+            }
+        }
+        if(minHeap.size() < 2){
+            return -1;
+        }
+        int secondMax = minHeap.poll();
+        int firstMax = minHeap.poll();
+        return (firstMax - 1) * (secondMax - 1);
+    }
+
     public static void main(String[] args) {
-        int[] nums = {3,2,3};
-        int result = majorityElement(nums);
+        int[]a ={3,4,5,2};
+        int result = maxProduct(a);
         System.out.println(result);
     }
 }

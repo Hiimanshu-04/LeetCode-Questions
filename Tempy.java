@@ -44,10 +44,19 @@ public class Tempy {
         return minMoves/2;
     }
 
+    public static int interview(int n){
+        if(n==0){
+            return 1;
+        }
+        if(n==1){
+            return 5;
+        }
+        return 25;
+    }
+
 
     public static void main(String[] args) {
-        int[] a = {3,2,6}; //3 2 6
-        int result = goodArray(a);
+        int result = interview(1);
         System.out.println(result);
     }
 }
